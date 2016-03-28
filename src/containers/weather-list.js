@@ -10,7 +10,7 @@ class WeatherList extends Component{
       for(var i=0; i < 14; i++){
         temps.push(cityData.data.list[i].main.temp);
       }*/
-      const temps = cityData.data.list.map(weather=>weather.main.temp);
+      const temps = cityData.data.list.map(weather=>weather.main.temp - 273.15);
       const pressure = cityData.data.list.map(weather=>weather.main.pressure || 0);
       const humidity = cityData.data.list.map(weather=>weather.main.humidity || 0);
       console.log(temps);
@@ -32,9 +32,9 @@ class WeatherList extends Component{
           <thead>
             <tr>
                 <th>City</th>
-                <th>Temperature</th>
-                <th>Pressure</th>
-                <th>Humidity</th>
+                <th>Temperature(C)</th>
+                <th>Pressure(hPa)</th>
+                <th>Humidity(%)</th>
             </tr>
           </thead>
           <tbody>
